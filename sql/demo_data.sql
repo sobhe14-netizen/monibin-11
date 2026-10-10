@@ -1,0 +1,21 @@
+USE ranjbar_maaref_v2;
+SET FOREIGN_KEY_CHECKS=0;
+DELETE FROM content_tags; DELETE FROM collection_lectures; DELETE FROM lecture_photos; DELETE FROM fishes; DELETE FROM lectures; DELETE FROM articles; DELETE FROM announcements; DELETE FROM collections; DELETE FROM tags;
+SET FOREIGN_KEY_CHECKS=1;
+INSERT INTO tags(name,definition) VALUES('اخلاق','مباحث مربوط به تهذیب و تربیت اخلاقی.'),('فقه','مباحث مربوط به احکام و مسائل فقهی.'),('اصول','مباحث اصول فقه و روش استنباط.'),('خشوع','حالت نفسانی فروتنی و توجه در برابر عظمت خداوند.'),('نماز','مباحث مربوط به نماز و کیفیت توجه در آن.'),('محرم','مطالب و جلسات مرتبط با ایام محرم.');
+SET @eth=(SELECT id FROM tags WHERE name='اخلاق');SET @kh=(SELECT id FROM tags WHERE name='خشوع');SET @nam=(SELECT id FROM tags WHERE name='نماز');SET @moh=(SELECT id FROM tags WHERE name='محرم');UPDATE tags SET parent_id=@eth WHERE name IN ('خشوع','نماز');
+INSERT INTO collections(title,description,poster_url,category_id,start_date_gregorian,end_date_gregorian,start_jalali,end_jalali) VALUES('محرم ۱۴۰۴','مجموعه نمونه محرم برای تست چند جلسه و بازه تاریخ.','uploads/posters/demo-moharram.svg',(SELECT id FROM categories WHERE name='مجموعه‌ها'),'2025-06-26','2025-07-05','۱۴۰۴/۰۴/۰۵','۱۴۰۴/۰۴/۱۴');
+SET @c=LAST_INSERT_ID();
+INSERT INTO lectures(title,audio_url,category_id,session_date,session_date_gregorian,hijri_date,description,collection_id,session_number,session_count) VALUES
+('جلسه اول محرم — معارف عاشورا','uploads/audio/demo1.wav',(SELECT id FROM categories WHERE name='منبر محرم'),'۱۴۰۴/۰۴/۰۵','2025-06-26','۱۴۴۶/۱۲/۲۹','نمونه جلسه اول مجموعه؛ برای تست اتصال فیش و آلبوم.',@c,1,10),
+('جلسه پنجم محرم — ادامه بحث','uploads/audio/demo2.wav',(SELECT id FROM categories WHERE name='منبر محرم'),'۱۴۰۴/۰۴/۰۹','2025-06-30','۱۴۴۷/۰۱/۰۳','نمونه جلسه پنجم؛ فیش‌های آن برای تست زمان 04:26 هستند.',@c,5,10),
+('جلسه مستقل اخلاق — خشوع','uploads/audio/demo3.wav',(SELECT id FROM categories WHERE name='جلسات اخلاق'),'۱۴۰۴/۰۵/۰۱','2025-07-23','۱۴۴۷/۰۱/۲۶','جلسه مستقل خارج از مجموعه.',NULL,NULL,NULL);
+SET @l1=LAST_INSERT_ID(); SET @l2=@l1+1; SET @l3=@l1+2; INSERT INTO collection_lectures VALUES(@c,@l1),(@c,@l2);
+INSERT INTO fishes(lecture_id,title,body,timestamp_seconds,sort_order) VALUES(@l1,'آغاز بحث','فیش نمونه اول جلسه اول برای تست زمان و نمایش کارت.',35,0),(@l1,'نکته دوم','فیش نمونه دوم جلسه اول.',95,1),(@l1,'نکته سوم','فیش نمونه سوم جلسه اول.',160,2),(@l1,'نکته چهارم','این فیش عمداً فیش چهارم است تا دکمه سایر مطالب تست شود.',220,3),(@l2,'جلسه پنجم در دقیقه ۴:۲۶','این فیش برای تست لینک به ثانیه ۴:۲۶ جلسه پنجم مجموعه محرم ساخته شده است.',266,0),(@l2,'نکته دوم جلسه پنجم','فیش دوم جلسه پنجم.',420,1),(@l3,'خشوع در نماز','فیش نمونه جلسه مستقل اخلاق.',75,0);
+SET @f1=LAST_INSERT_ID(); SET @f2=@f1+1; SET @f3=@f2+1; SET @f4=@f3+1; SET @f5=@f4+1; SET @f6=@f5+1; SET @f7=@f6+1;
+INSERT INTO articles(title,author,article_date,hijri_date,body,category_id) VALUES('مقاله نمونه: حقیقت خشوع','استاد حامد رنجبر','۱۴۰۴/۰۴/۰۸','۱۴۴۷/۰۱/۰۲','این متن آزمایشی برای تست مقاله و اتصال فیش به مقاله است.',(SELECT id FROM categories WHERE name='مقالات')),('مقاله نمونه: معارف محرم','گروه پژوهش','۱۴۰۴/۰۴/۱۰','۱۴۴۷/۰۱/۰۴','متن آزمایشی مرتبط با محرم.',(SELECT id FROM categories WHERE name='مقالات'));
+SET @a1=LAST_INSERT_ID(); SET @a2=@a1+1; UPDATE fishes SET body=CONCAT(body,'\n\n[[article:',@a1,'|مطالعه مقاله نمونه خشوع]]') WHERE id=@f1; UPDATE fishes SET body=CONCAT(body,'\n\n[[fish:',@l1,':',@f2,'|رفتن به فیش دوم جلسه اول]]') WHERE id=@f3;
+INSERT INTO announcements(title,body,event_date,hijri_date,event_time,location,poster_url,category_id) VALUES('اعلان نمونه مراسم محرم','این اعلان برای تست متن، پوستر، تاریخ شمسی و قمری است.','۱۴۰۴/۰۴/۱۰','۱۴۴۷/۰۱/۰۴','۲۰:۳۰','حسینیه نمونه','uploads/posters/demo-announcement.svg',(SELECT id FROM categories WHERE name='اعلانات مراسم'));
+SET @n1=LAST_INSERT_ID();
+INSERT INTO lecture_photos(lecture_id,url,caption,sort_order) VALUES(@l1,'uploads/gallery/demo1.svg','عکس جلسه اول',0),(@l1,'uploads/gallery/demo2.svg','عکس افقی جلسه اول',1),(@l2,'uploads/gallery/demo3.svg','عکس جلسه پنجم',0);
+INSERT INTO content_tags VALUES('lecture',@l1,@moh),('lecture',@l2,@moh),('lecture',@l3,@eth),('fish',@f1,@kh),('fish',@f1,@nam),('fish',@f5,@moh),('article',@a1,@kh),('article',@a2,@moh),('announcement',@n1,@moh),('collection',@c,@moh);

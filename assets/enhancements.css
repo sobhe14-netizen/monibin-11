@@ -1,0 +1,99 @@
+.announcement-card{padding:12px;overflow:hidden}
+.announcement-poster{position:relative;overflow:hidden;border-radius:16px;background:#edf6f4}
+.announcement-poster img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;transition:transform .28s ease}
+.announcement-overlay{position:absolute;inset:auto 0 0;padding:18px 15px 14px;color:#fff;background:linear-gradient(transparent,rgba(7,34,31,.94));transform:translateY(38%);transition:transform .24s ease}
+.announcement-overlay h3{margin:0 0 6px}
+.announcement-overlay p{margin:0;line-height:1.8}
+.announcement-card:hover .announcement-poster img{transform:scale(1.055)}
+.announcement-card:hover .announcement-overlay,.announcement-card:focus-within .announcement-overlay{transform:translateY(0)}
+.announcement-card .announcement-meta{margin:10px 0}
+.announcement-card .announcement-overlay .meta{color:#e4f6f2}
+.collection-deck{position:relative;padding-top:25px}
+.collection-deck:before,.collection-deck:after{content:"";position:absolute;inset:7px 15px auto;height:22px;border:1px solid #c8e7e1;border-radius:17px 17px 0 0;background:#eaf7f4}
+.collection-deck:after{inset:0 8px auto;background:#f4fbf9}
+.collection-deck>.card{position:relative;z-index:1}
+.collection-sessions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
+.collection-session{position:relative;display:flex;flex-direction:column;min-width:0;padding:16px 16px 68px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 9px 25px rgba(15,118,110,.07)}
+.collection-session h3{min-height:3.2em;margin-bottom:5px}
+.collection-session .audio{margin:8px 0}
+.collection-session .session-topic{min-height:2.8em;line-height:1.7}
+.session-number{position:absolute;bottom:13px;left:50%;display:grid;place-items:center;width:40px;height:40px;transform:translateX(-50%);border-radius:50%;background:#153735;color:#fff;font-weight:800}
+.session-card{display:flex;flex-direction:column}
+.session-card .audio{margin-top:auto}
+.session-card .actions{margin-top:auto;padding-top:10px}
+.session-archive-card{border-top:1px solid var(--line)}
+.favorite-button{min-width:40px;padding:7px 10px;font-size:19px;line-height:1;color:#9b7414}
+.favorite-button.is-favorite{color:#d18b00;background:#fff8dd;border-color:#f4df9d}
+.content-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.account-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 16px}
+.brand-tagline{max-width:240px;color:var(--muted);font-size:11px;line-height:1.5}
+.tag-tree{display:grid;gap:14px}
+.tag-tree-node{padding:13px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 8px 22px rgba(15,118,110,.06)}
+.tag-tree-children{margin:12px 0 0 0;padding:0 18px 0 0;border-right:2px solid #cce9e3;display:grid;gap:10px}
+.tag-counts{display:flex;gap:6px;flex-wrap:wrap;margin:9px 0}
+.tag-counts .pill{font-size:11px}
+.tag-more{margin-top:12px}
+.tag-more summary{cursor:pointer;color:var(--g);font-weight:700}
+.markdown-body{white-space:normal;line-height:2.2;overflow-wrap:anywhere}
+.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4{line-height:1.6;margin:1.3em 0 .45em}
+.markdown-body p{margin:.55em 0}
+.markdown-body ul,.markdown-body ol{padding-right:1.7em}
+.markdown-body blockquote{margin:1em 0;padding:8px 14px;border-right:4px solid var(--g2);background:#f1faf8;border-radius:8px;color:#526562}
+.markdown-body a{color:var(--g);text-decoration:underline;text-underline-offset:3px}
+.markdown-body .wiki-link{display:inline;color:var(--g);font-weight:600;text-decoration:underline;cursor:pointer}
+.markdown-body .broken-wikilink{color:#74817f;border-bottom:1px dashed #9baaa7;cursor:help}
+.markdown-body code{direction:ltr;unicode-bidi:embed;background:#eef4f3;padding:2px 6px;border-radius:5px}
+.session-text{margin:18px 0;padding:18px;border:1px solid var(--line);border-radius:16px;background:#fff}
+.session-text>.head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.markdown-help{grid-column:1/-1;padding:8px 11px;border-radius:10px;background:#effaf8;color:#536e69}
+.fish-page .fish-full{white-space:normal}
+#lightbox.modal{padding:0;background:#071715f2}
+#lightbox.modal.show{overflow:hidden}
+#lightbox .modalbox{width:100vw;height:100dvh;max-height:100dvh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:16px;border-radius:0;background:transparent!important}
+#lightbox .modalhead{width:min(1200px,100%);margin:0 auto 8px;flex:none}
+#lightImg{display:block;width:auto;height:auto;max-width:min(96vw,1500px)!important;max-height:calc(100dvh - 112px)!important;object-fit:contain;margin:auto}
+#lightbox .actions{flex:none;margin:8px auto 0}
+body.lightbox-open{overflow:hidden}
+.account-panel{display:flex;align-items:center;gap:7px}
+.account-panel .small{white-space:nowrap}
+.account-favorite-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.account-favorite-row .actions{margin:0}
+.admin-user-list{display:grid;gap:12px;max-height:42vh;overflow:auto}
+.admin-user-row{display:grid;grid-template-columns:minmax(100px,1fr) repeat(3,minmax(110px,1fr)) auto;align-items:center;gap:10px;padding:12px;border:1px solid var(--line);border-radius:12px}
+.admin-user-row .field{margin:0}
+.admin-user-row .small{display:block}
+.teacher-portraits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.teacher-portraits img,.teacher-portrait-placeholder{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:18px;background:#eef7f5}
+.teacher-portrait-placeholder{grid-column:1/-1;display:grid;place-items:center;padding:22px;text-align:center;color:var(--muted);border:1px dashed var(--line)}
+.table-wrap{max-width:100%;overflow:auto}
+.table-wrap table{width:100%;border-collapse:collapse}
+.table-wrap th,.table-wrap td{padding:8px;border-bottom:1px solid var(--line);text-align:right}
+.table-wrap input{width:100%;min-width:115px;border:1px solid var(--line);border-radius:9px;padding:7px}
+@media(max-width:900px){.collection-sessions{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){
+ .navlinks{display:flex;flex:1;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;gap:5px;scrollbar-width:thin}
+ .navlinks>.navbtn{display:block;flex:0 0 auto;padding:7px 9px;font-size:12px}
+ .brand-tagline{display:none}
+ .account-panel{flex-wrap:wrap;justify-content:flex-end}
+ .account-panel .small{display:none}
+ .announcement-poster img{height:auto}
+ .announcement-overlay{position:static;transform:none;padding:13px;color:var(--ink);background:#f2faf8}
+ .announcement-overlay .meta{color:var(--muted)}
+ .collection-sessions{grid-template-columns:1fr}
+ .collection-session{padding-bottom:64px}
+ .admin-user-row{grid-template-columns:1fr 1fr}
+ .teacher-portraits{grid-template-columns:1fr 1fr}
+ .tag-tree-children{padding-right:11px}
+ #lightbox .modalbox{padding:8px}
+ #lightImg{max-width:100vw!important;max-height:calc(100dvh - 110px)!important}
+}
+@media(prefers-reduced-motion:reduce){.announcement-poster img,.announcement-overlay{transition:none}}
+@media print{
+ body{background:#fff;color:#000;font-family:Tahoma,sans-serif}
+ .top,.footer,.adminbar,.content-actions,.actions,.modal,.calendar,.toast,.quick{display:none!important}
+ .container{width:100%;max-width:none;margin:0;padding:0}
+ #app,.section,.page,.session-text{margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;background:#fff!important}
+ .markdown-body{color:#000;line-height:1.8}
+ audio{display:none!important}
+ a{color:#000;text-decoration:none}
+}
